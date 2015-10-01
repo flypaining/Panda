@@ -1,10 +1,10 @@
-#include "StorkApp.h"
+#include "PandaApp.h"
 #include "Moose.h"
 #include "AppFactory.h"
 #include "ModulesApp.h"
 
 template<>
-InputParameters validParams<StorkApp>()
+InputParameters validParams<PandaApp>()
 {
   InputParameters params = validParams<MooseApp>();
 
@@ -15,40 +15,41 @@ InputParameters validParams<StorkApp>()
   return params;
 }
 
-StorkApp::StorkApp(InputParameters parameters) :
+PandaApp::PandaApp(InputParameters parameters) :
     MooseApp(parameters)
 {
   Moose::registerObjects(_factory);
   ModulesApp::registerObjects(_factory);
-  StorkApp::registerObjects(_factory);
+  PandaApp::registerObjects(_factory);
 
   Moose::associateSyntax(_syntax, _action_factory);
   ModulesApp::associateSyntax(_syntax, _action_factory);
-  StorkApp::associateSyntax(_syntax, _action_factory);
+  PandaApp::associateSyntax(_syntax, _action_factory);
 }
 
-StorkApp::~StorkApp()
+PandaApp::~PandaApp()
 {
 }
 
 // External entry point for dynamic application loading
-extern "C" void StorkApp__registerApps() { StorkApp::registerApps(); }
+extern "C" void PandaApp__registerApps() { PandaApp::registerApps(); }
 void
-StorkApp::registerApps()
+PandaApp::registerApps()
 {
-  registerApp(StorkApp);
+  registerApp(PandaApp);
 }
 
 // External entry point for dynamic object registration
-extern "C" void StorkApp__registerObjects(Factory & factory) { StorkApp::registerObjects(factory); }
+extern "C" void PandaApp__registerObjects(Factory & factory) { PandaApp::registerObjects(factory); }
 void
-StorkApp::registerObjects(Factory & factory)
+PandaApp::registerObjects(Factory & factory)
 {
+  registerKernel(LaplaceYoung);
 }
 
 // External entry point for dynamic syntax association
-extern "C" void StorkApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { StorkApp::associateSyntax(syntax, action_factory); }
+extern "C" void PandaApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { PandaApp::associateSyntax(syntax, action_factory); }
 void
-StorkApp::associateSyntax(Syntax & syntax, ActionFactory & action_factory)
+PandaApp::associateSyntax(Syntax & syntax, ActionFactory & action_factory)
 {
 }
