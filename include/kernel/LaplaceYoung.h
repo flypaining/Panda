@@ -1,33 +1,19 @@
-/****************************************************************/
-/*               DO NOT MODIFY THIS HEADER                      */
-/* MOOSE - Multiphysics Object Oriented Simulation Environment  */
-/*                                                              */
-/*           (c) 2010 Battelle Energy Alliance, LLC             */
-/*                   ALL RIGHTS RESERVED                        */
-/*                                                              */
-/*          Prepared by Battelle Energy Alliance, LLC           */
-/*            Under Contract No. DE-AC07-05ID14517              */
-/*            With the U. S. Department of Energy               */
-/*                                                              */
-/*            See COPYRIGHT for full restrictions               */
-/****************************************************************/
-
-#ifndef DIFFUSION_H
-#define DIFFUSION_H
+#ifndef LaplaceYoung_H
+#define LaplaceYoung_H
 
 #include "Kernel.h"
 
-class Diffusion;
+class LaplaceYoung;
 
 template<>
 InputParameters validParams<Diffusion>();
 
 
-class Diffusion : public Kernel
+class LaplaceYoung : public Kernel
 {
 public:
-  Diffusion(const InputParameters & parameters);
-  virtual ~Diffusion();
+  LaplaceYoung(const InputParameters & parameters);
+  virtual ~LaplaceYoung();
 
 protected:
   virtual Real computeQpResidual();
@@ -35,4 +21,4 @@ protected:
 };
 
 
-#endif /* DIFFUSION_H */
+#endif /* LaplaceYoung_H */

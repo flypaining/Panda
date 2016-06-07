@@ -3,6 +3,8 @@
 #include "AppFactory.h"
 #include "ModulesApp.h"
 
+#include "LaplaceYoung.h"
+
 template<>
 InputParameters validParams<PandaApp>()
 {
