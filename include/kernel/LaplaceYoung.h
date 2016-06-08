@@ -6,7 +6,7 @@
 class LaplaceYoung;
 
 template<>
-InputParameters validParams<Diffusion>();
+InputParameters validParams<LaplaceYoung>();
 
 
 class LaplaceYoung : public Kernel
